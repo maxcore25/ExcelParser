@@ -1,4 +1,3 @@
 *.docx
 *.xlsx
-venv
-*.rar
+.idea
