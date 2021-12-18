@@ -1,5 +1,6 @@
 from docxtpl import DocxTemplate
 import openpyxl
+from docx2pdf import convert
 
 # Define variable to load the workbook
 workbook = openpyxl.load_workbook("120519060Марьина Роща.xlsx")
@@ -20,4 +21,7 @@ for i in range(1, worksheet.max_row):
         context = {'fio': vals[5], 'square': vals[2], 'inn': '-', 'address': vals[3], 'cad_num': vals[1]}
     doc.render(context)
     doc.save(f"./final_docs/letter_700_PP_{i+1}.docx")
+
+convert('./final_docs')
+
 
