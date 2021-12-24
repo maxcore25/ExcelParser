@@ -20,6 +20,6 @@ for i in range(1, worksheet.max_row):
     else:
         context = {'fio': vals[5], 'square': vals[2], 'inn': '-', 'address': vals[3]}
     doc.render(context)
-    doc.save(f"./final_docs/letter_700_PP_{i+1}.docx")
+    doc.save(f"./final_docs/letter_700_PP_{i + 1}.docx")
 
 convert('./final_docs')
