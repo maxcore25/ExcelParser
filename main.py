@@ -16,9 +16,19 @@ for i in range(1, worksheet.max_row):
     if 'ИНН' in str(vals[29]):
         spl_vals_29 = vals[29].split(',')
         fio, inn = spl_vals_29[0], spl_vals_29[1].split(':')[1]
-        context = {'fio': fio, 'square': vals[11], 'inn': inn, 'address': vals[13]}
+        context = {'fio': fio,
+                   'square': vals[11],
+                   'inn': inn,
+                   'address': vals[13],
+                   'cad_num': vals[4],
+                   'cad_cost': vals[15]}
     else:
-        context = {'fio': vals[5], 'square': vals[2], 'inn': '-', 'address': vals[3]}
+        context = {'fio': vals[29],
+                   'square': vals[11],
+                   'inn': '-',
+                   'address': vals[13],
+                   'cad_num': vals[4],
+                   'cad_cost': vals[15]}
     doc.render(context)
     doc.save(f"./final_docs/letter_700_PP_{i + 1}.docx")
 
