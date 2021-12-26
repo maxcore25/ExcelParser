@@ -3,7 +3,8 @@ import openpyxl
 from docx2pdf import convert
 
 # Define variable to load the workbook
-workbook = openpyxl.load_workbook("120519060Марьина Роща.xlsx")
+table_name = input('Enter table name you want to parse: ')
+workbook = openpyxl.load_workbook(f"./tables/{table_name}.xlsx")
 # Define variable to read the active sheet:
 worksheet = workbook.active
 # Iterate the loop to read the cell values
