@@ -16,7 +16,10 @@ for i in range(1, worksheet.max_row):
     print(vals)
     if 'ИНН' in str(vals[29]):
         spl_vals_29 = vals[29].split(',')
-        fio, inn = spl_vals_29[0], spl_vals_29[1].split(':')[1]
+        try:
+            fio, inn = spl_vals_29[0], spl_vals_29[1].split(':')[1]
+        except IndexError:
+            pass
         context = {'fio': fio,
                    'square': vals[11],
                    'inn': inn,
