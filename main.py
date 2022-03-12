@@ -5,7 +5,6 @@ from docx2pdf import convert
 
 def do_things(template, table, save_dir):
     # Define variable to load the workbook
-    table_name = input('Enter table name you want to parse: ')
     workbook = openpyxl.load_workbook(table)
     # Define variable to read the active sheet:
     worksheet = workbook.active

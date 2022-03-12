@@ -1,11 +1,7 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QMainWindow, QFileDialog
-from PyQt5.QtWidgets import QLabel, QErrorMessage, QHBoxLayout, QInputDialog, QFileDialog
-from PyQt5.QtGui import QPixmap
+from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog
 from letters_gen_ui import Ui_MainWindow
 from main import do_things
-import shutil
-import os.path
 
 
 class MainWidget(Ui_MainWindow, QMainWindow):
@@ -26,12 +22,12 @@ class MainWidget(Ui_MainWindow, QMainWindow):
         self.letters_dir = ''
 
     def open_template(self):
-        fname = QFileDialog.getOpenFileName(ex, 'Open file', '/home', filter='Word files (.docx)')
+        fname = QFileDialog.getOpenFileName(ex, 'Open file', '/home', filter='Word files (*.docx)')
         self.lineEdit_getTemplate.setText(fname[0])
         self.template = self.lineEdit_getTemplate.text()
 
     def open_data(self):
-        fname = QFileDialog.getOpenFileName(ex, 'Open file', '/home')
+        fname = QFileDialog.getOpenFileName(ex, 'Open file', '/home', filter='Excel files (*.xlsx)')
         self.lineEdit_getData.setText(fname[0])
         self.data_file = self.lineEdit_getData.text()
 
