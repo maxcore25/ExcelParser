@@ -48,7 +48,6 @@ class MainWidget(Ui_MainWindow, QMainWindow):
                     self.progressBar.setMaximum(step[1])
                     self.progressBar.setValue(step[0])
             except Exception as e:
-                raise e
                 self.message('error', str(e))
             else:
                 self.message('info', 'Письма сгенерированы успешно!')

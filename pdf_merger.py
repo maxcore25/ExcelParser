@@ -9,7 +9,7 @@ def do_merge_epta(path):
         counter += 1
         merger = PdfFileMerger()
 
-        merger.append(path + pdf_letter.name)
+        merger.append(os.path.join(path, pdf_letter.name))
         merger.append('Приложение к письму оспаривание КС.pdf')
 
         merger.write(os.path.join(path, f'letter_700_PP_{counter + 1}.pdf'))
