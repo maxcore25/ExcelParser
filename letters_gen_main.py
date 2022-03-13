@@ -1,7 +1,11 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog
 from letters_gen_ui import Ui_MainWindow
+from pathlib import Path
 from main import do_things
+
+
+HOME = str(Path.home())
 
 
 class MainWidget(Ui_MainWindow, QMainWindow):
@@ -22,23 +26,27 @@ class MainWidget(Ui_MainWindow, QMainWindow):
         self.letters_dir = ''
 
     def open_template(self):
-        fname = QFileDialog.getOpenFileName(ex, 'Open file', '/home', filter='Word files (*.docx)')
+        fname = QFileDialog.getOpenFileName(ex, 'Open template file', HOME, filter='Word files (*.docx)')
         self.lineEdit_getTemplate.setText(fname[0])
         self.template = self.lineEdit_getTemplate.text()
 
     def open_data(self):
-        fname = QFileDialog.getOpenFileName(ex, 'Open file', '/home', filter='Excel files (*.xlsx)')
+        fname = QFileDialog.getOpenFileName(ex, 'Open data file', HOME, filter='Excel files (*.xlsx)')
         self.lineEdit_getData.setText(fname[0])
         self.data_file = self.lineEdit_getData.text()
 
     def open_dir(self):
-        dir_name = QFileDialog.getExistingDirectory(ex, 'Choose folder', '/home')
+        dir_name = QFileDialog.getExistingDirectory(ex, 'Choose folder', HOME)
         self.lineEdit_chooseDir.setText(dir_name)
         self.letters_dir = self.lineEdit_chooseDir.text()
 
     def run(self):
+        self.progressBar.setMinimum(0)
+        self.progressBar.setValue(0)
         if self.template and self.data_file and self.letters_dir:
-            do_things(self.template, self.data_file, self.letters_dir)
+            for step in do_things(self.template, self.data_file, self.letters_dir):
+                self.progressBar.setMaximum(step[1])
+                self.progressBar.setValue(step[0])
 
 
 app = QApplication(sys.argv)

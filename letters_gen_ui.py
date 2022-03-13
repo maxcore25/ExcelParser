@@ -107,4 +107,4 @@ class Ui_MainWindow(object):
         self.pushButton_getData.setText(_translate("MainWindow", "Выбрать"))
         self.label_2.setText(_translate("MainWindow", "Путь к файлу с данными"))
         self.pushButton_chooseDir.setText(_translate("MainWindow", "Выбрать"))
-        self.label_3.setText(_translate("MainWindow", "Путь к папке, где будут сгенерированы письма"))
+        self.label_3.setText(_translate("MainWindow", "Путь к папке, где будет сохранен архив"))
