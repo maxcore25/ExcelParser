@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog
+from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox
 from letters_gen_ui import Ui_MainWindow
 from pathlib import Path
 from main import do_things
@@ -44,9 +44,30 @@ class MainWidget(Ui_MainWindow, QMainWindow):
         self.progressBar.setMinimum(0)
         self.progressBar.setValue(0)
         if self.template and self.data_file and self.letters_dir:
-            for step in do_things(self.template, self.data_file, self.letters_dir):
-                self.progressBar.setMaximum(step[1])
-                self.progressBar.setValue(step[0])
+            try:
+                for step in do_things(self.template, self.data_file, self.letters_dir):
+                    self.progressBar.setMaximum(step[1])
+                    self.progressBar.setValue(step[0])
+            except Exception as e:
+                self.message('error', str(e))
+            else:
+                self.message('info', 'Письма сгенерированы успешно!')
+        else:
+            self.message('warning', 'Вы заполнили не все поля. \nТак, быстро кабанчиком метнулся и заполнил!!!')
+
+    @staticmethod
+    def message(status, text):
+        msg = QMessageBox()
+        msg.setWindowTitle(status)
+        msg.setText(text)
+        if status == 'warning':
+            msg.setIcon(QMessageBox.Warning)
+        elif status == 'info':
+            msg.setIcon(QMessageBox.Information)
+        elif status == 'error':
+            msg.setIcon(QMessageBox.Critical)
+
+        msg.exec_()
 
 
 app = QApplication(sys.argv)

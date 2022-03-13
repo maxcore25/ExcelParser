@@ -100,7 +100,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "ULTIMATE EPTA LETTERS GENERATOR"))
         self.pushButton_run.setText(_translate("MainWindow", "Сделать ЗАЕБИСЬ!!!!!"))
         self.pushButton_getTemplate.setText(_translate("MainWindow", "Выбрать"))
         self.label.setText(_translate("MainWindow", "Путь к файлу шаблона"))

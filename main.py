@@ -42,6 +42,6 @@ def do_things(template, table, save_dir):
 
         yield i, worksheet.max_row-1
 
-    # convert(os.path.join(save_dir, "temp"))
+    convert(os.path.join(save_dir, "temp"))
     shutil.make_archive(os.path.join(save_dir, "letters_700_pp"), "zip", os.path.join(save_dir, "temp"))
     shutil.rmtree(os.path.join(save_dir, 'temp'))
