@@ -2,11 +2,15 @@
 tables
 final_docs
 rars
+venv
+__pycache__
 *.docx
 *.pdf
 *.zip
 *.xls
 *.xlsx
 *.csv
+*.jpg
+*.png
 files.py
 files2.py
