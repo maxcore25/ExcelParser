@@ -45,8 +45,12 @@ class MainWidget(Ui_MainWindow, QMainWindow):
         if self.template and self.data_file and self.letters_dir:
             try:
                 for step in do_things(self.template, self.data_file, self.letters_dir):
-                    self.progressBar.setMaximum(step[1])
-                    self.progressBar.setValue(step[0])
+                    if step == 'convert':
+                        self.message('info', 'Идет конвертация файлов в pdf.\nПожалуйста, подождите.')
+                        self.progressBar.hide()
+                    else:
+                        self.progressBar.setMaximum(step[1])
+                        self.progressBar.setValue(step[0])
             except Exception as e:
                 self.message('error', str(e))
             else:

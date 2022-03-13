@@ -46,6 +46,7 @@ def do_things(template, table, save_dir):
 
         yield i, worksheet.max_row - 1
 
+    yield 'convert'
     convert(temp)
     do_word_nahui(temp)
     do_merge_epta(temp)
