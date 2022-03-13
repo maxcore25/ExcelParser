@@ -48,11 +48,12 @@ class MainWidget(Ui_MainWindow, QMainWindow):
                     self.progressBar.setMaximum(step[1])
                     self.progressBar.setValue(step[0])
             except Exception as e:
+                raise e
                 self.message('error', str(e))
             else:
                 self.message('info', 'Письма сгенерированы успешно!')
         else:
-            self.message('warning', 'Вы заполнили не все поля. \nТак, быстро кабанчиком метнулся и заполнил!!!')
+            self.message('warning', 'Вы заполнили не все поля.')
 
     @staticmethod
     def message(status, text):

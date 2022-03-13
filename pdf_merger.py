@@ -1,17 +1,17 @@
 import os
 from PyPDF2 import PdfFileMerger
 
-path = os.getcwd() + '\\final_docs\\'
-print(path)
-counter = 0
 
-for pdf_letter in os.scandir(path):
-    counter += 1
-    merger = PdfFileMerger()
+def do_merge_epta(path):
+    counter = 0
 
-    merger.append(path + pdf_letter.name)
-    merger.append('Приложение к письму оспаривание КС.pdf')
+    for pdf_letter in os.scandir(path):
+        counter += 1
+        merger = PdfFileMerger()
 
-    merger.write(os.getcwd() + '\\merged_letters\\' + f'letter_700_PP_{counter + 1}.pdf')
-    merger.close()
-    print('Merged:', pdf_letter.name)
+        merger.append(path + pdf_letter.name)
+        merger.append('Приложение к письму оспаривание КС.pdf')
+
+        merger.write(os.path.join(path, f'letter_700_PP_{counter + 1}.pdf'))
+        merger.close()
+        print('Merged:', pdf_letter.name)

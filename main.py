@@ -4,9 +4,13 @@ import openpyxl
 import os
 import shutil
 
+from word_killer228 import do_word_nahui
+from pdf_merger import do_merge_epta
+
 
 def do_things(template, table, save_dir):
     os.mkdir(os.path.join(save_dir, 'temp'))
+    temp = os.path.join(save_dir, 'temp')
     # Define variable to load the workbook
     workbook = openpyxl.load_workbook(table)
     # Define variable to read the active sheet:
@@ -38,10 +42,12 @@ def do_things(template, table, save_dir):
                        'cad_num': vals[4],
                        'cad_cost': vals[15]}
         doc.render(context)
-        doc.save(os.path.join(save_dir, "temp", f"letter_700_PP_{i + 1}.docx"))
+        doc.save(os.path.join(temp, f"letter_700_PP_{i + 1}.docx"))
 
         yield i, worksheet.max_row - 1
 
-    convert(os.path.join(save_dir, "temp"))
-    shutil.make_archive(os.path.join(save_dir, "letters_700_pp"), "zip", os.path.join(save_dir, "temp"))
-    shutil.rmtree(os.path.join(save_dir, 'temp'))
+    convert(temp)
+    do_word_nahui(temp)
+    do_merge_epta(temp)
+    shutil.make_archive(os.path.join(save_dir, "letters_700_pp"), "zip", temp)
+    shutil.rmtree(temp)
