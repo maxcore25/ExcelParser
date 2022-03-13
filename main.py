@@ -40,7 +40,7 @@ def do_things(template, table, save_dir):
         doc.render(context)
         doc.save(os.path.join(save_dir, "temp", f"letter_700_PP_{i + 1}.docx"))
 
-        yield i, worksheet.max_row-1
+        yield i, worksheet.max_row - 1
 
     convert(os.path.join(save_dir, "temp"))
     shutil.make_archive(os.path.join(save_dir, "letters_700_pp"), "zip", os.path.join(save_dir, "temp"))

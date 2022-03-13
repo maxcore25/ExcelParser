@@ -4,7 +4,6 @@ from letters_gen_ui import Ui_MainWindow
 from pathlib import Path
 from main import do_things
 
-
 HOME = str(Path.home())
 
 
