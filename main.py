@@ -50,5 +50,5 @@ def do_things(template, table, save_dir):
     convert(temp)
     do_word_nahui(temp)
     do_merge_epta(temp)
-    shutil.make_archive(os.path.join(save_dir, "letters_700_pp"), "zip", temp)
+    shutil.make_archive(os.path.join(save_dir, table.split('/')[-1].split('.')[0]), "zip", temp)
     shutil.rmtree(temp)
