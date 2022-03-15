@@ -53,6 +53,7 @@ class MainWidget(Ui_MainWindow, QMainWindow):
                         self.progressBar.setValue(step[0])
             except Exception as e:
                 self.message('error', str(e))
+                raise e
             else:
                 self.message('info', 'Письма сгенерированы успешно!')
         else:
