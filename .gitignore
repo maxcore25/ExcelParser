@@ -12,5 +12,6 @@ __pycache__
 *.csv
 *.jpg
 *.png
+*.rar
 files.py
 files2.py
