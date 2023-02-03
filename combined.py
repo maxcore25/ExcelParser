@@ -72,6 +72,10 @@ path = os.getcwd() + '\\final_docs\\'
 print(path)
 counter = 0
 
+merged_files_path = os.getcwd() + f'\\{table_name}\\'
+if not os.path.exists(merged_files_path):
+    os.makedirs(merged_files_path)
+
 for pdf_letter in os.scandir(path):
     counter += 1
     merger = PdfFileMerger()
@@ -79,7 +83,8 @@ for pdf_letter in os.scandir(path):
     merger.append(path + pdf_letter.name)
     merger.append('Приложение к письму оспаривание КС.pdf')
 
-    merger.write(os.getcwd() + '\\merged_letters\\' + f'letter_700_PP_{counter + 1}.pdf')
+    # merger.write(os.getcwd() + '\\merged_letters\\' + f'letter_700_PP_{counter + 1}.pdf')
+    merger.write(merged_files_path + f'letter_700_PP_{counter + 1}.pdf')
     merger.close()
     print('Merged:', pdf_letter.name)
 
